@@ -18,13 +18,11 @@ class Solution
     {
         $map = [];
         foreach ($nums as $key => $value) {
-            $map[$value] = $key;
-        }
-        foreach ($nums as $key => $value) {
             $diff = $target - $value;
-            if (array_key_exists($diff, $map) && $map[$diff] != $key) {
+            if (array_key_exists($diff, $map)) {
                 return [$key, $map[$diff]];
             }
+            $map[$value] = $key;
         }
         return null;
     }
