@@ -16,12 +16,12 @@ class Solution
      */
     function mergeAlternately($word1, $word2)
     {
-        $arr1 = str_split($word1);
-        $arr2 = str_split($word2);
+        $len1 = strlen($word1);
+        $len2 = strlen($word2);
         $result = '';
-        for ($i = 0; $i < max(count($arr1), count($arr2)); $i++) {
-            if ($i < count($arr1)) $result .= $arr1[$i];
-            if ($i < count($arr2)) $result .= $arr2[$i];
+        for ($i = 0; $i < max($len1, $len2); $i++) {
+            if ($i < $len1) $result .= $word1[$i];
+            if ($i < $len2) $result .= $word2[$i];
         }
         return $result;
     }
