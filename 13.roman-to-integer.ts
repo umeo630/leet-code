@@ -17,20 +17,15 @@ function romanToInt(s: string): number {
   };
 
   const inputArray = [...s];
-  const romans = Object.keys(romanToIntMap);
   let sum = 0;
   for (let i = 0; i < inputArray.length; i++) {
-    const value = inputArray[i];
-    if (value === "I" || value === "X" || value === "C") {
-      const nextValue = inputArray[i + 1];
-      const index = romans.indexOf(value);
-      if (nextValue === romans[index + 1] || nextValue === romans[index + 2]) {
-        sum += romanToIntMap[nextValue] - romanToIntMap[value];
-        i++;
-        continue;
-      }
+    const value = romanToIntMap[inputArray[i]];
+    const nextValue = romanToIntMap[inputArray[i + 1]];
+    if (value < nextValue) {
+      sum -= value;
+      continue;
     }
-    sum += romanToIntMap[value];
+    sum += value;
   }
 
   return sum;
